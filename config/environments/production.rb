@@ -3,10 +3,32 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+    #-------------------mailer---------------------------
+
+  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://starfish-app-3xk6j.ondigitalocean.app/'}
+  
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: 'https://starfish-app-3xk6j.ondigitalocean.app/',
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "apikey",
+    password: Rails.application.credentials.dig(:sendgrid, :api_key)
+  }
+
+  #----------------------------------------------------
+
+
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  #----------------added-----------------------
+#----------------added-----------------------
 Rails.application.routes.default_url_options = {
   host: 'https://starfish-app-3xk6j.ondigitalocean.app/'         
 }

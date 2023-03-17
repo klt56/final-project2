@@ -1,0 +1,37 @@
+<br>
+<h1 style="color: green">LeBonCoinDuDessin</h1>
+<h3>Bienvenue <%= @user.email %> !</h3>
+
+<p>Nous avons reçu une demande pour enregistrer cette adresse e-mail avec votre compte LeBonCoinDuDessin.<br>
+Pour confirmer que vous êtes le propriétaire de cette adresse e-mail,<br>
+veuillez cliquer sur le lien ci-dessous :</p>
+
+<p style="color: red"><%= link_to 'Confirmer mon compte', confirmation_url(@resource, confirmation_token: @token) %></p>
+<br>
+<p>Si vous n'avez pas demandé à enregistrer cette adresse e-mail, veuillez ignorer ce message.</p>
+<p>Merci de votre confiance en LeBonCoinDuDessin</p>
+<br><br>
+<p>Cordialement,<br>
+L'équipe LeBonCoinDuDessin<br>
+ <small style="color: blue">Jerry MANKOU | Kevin LETOURNEUR | Sarah MAILAIKIA | Anthony MILORADOVIC </small>
+</p>
+
+<hr>
+<br>
+<h1 style="color: green">LeBonCoinDuDessin</h1>
+<h3>Welcome <%= @user.email %> !</h3>
+
+
+<p>We received a request to register this email address with your LeBonCoinDuDessin account.<br>
+To confirm that you are the owner of this email address,<br>
+please click on the link below:</p>
+
+<p style="color: red"><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<br>
+<p>If you have not requested to save this email address, please ignore this message.</p>
+<p>Thank you for trusting LeBonCoinDuDessin</p>
+<br><br>
+<p>Regards,<br>
+ LeBonCoinDuDessin team.<br>
+ <small style="color: blue">Jerry MANKOU | Kevin LETOURNEUR | Sarah MAILAIKIA | Anthony MILORADOVIC </small>
+ </p>
