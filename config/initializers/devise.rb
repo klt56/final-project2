@@ -193,7 +193,7 @@ Devise.setup do |config|
   # config.timeout_in = 30.minutes
 ########################################################################
   #test pour resoudre probleme flash
-config.navigational_formats = []
+  #config.navigational_formats = []
 #########################################################################
 
 

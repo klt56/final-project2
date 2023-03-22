@@ -6,12 +6,10 @@ Rails.application.routes.draw do
              }
   get '/member-data', to: 'members#show'
 
-
-
   resources :posts
-get 'latest', to: 'posts#latest'
+get 'posts', to: 'posts#index'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-resources :checkout, only: [:create]
-  # Defines the root path route ("/")
-  # root "posts#index"
-end
+
+   end
+

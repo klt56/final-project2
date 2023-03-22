@@ -4,18 +4,25 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
-
-    render json: @posts
+    serialized_posts = @posts.map { |post| PostSerializer.new(post).serializable_hash[:data][:attributes] }
+    render json: serialized_posts
   end
+
 
   # GET /posts/1
   def show
-    render json: @post
+    render json: {
+      post: @post,
+      image_url: url_for(@post.image)
+    }
   end
+
 
   # POST /posts
   def create
     @post = Post.new(post_params)
+    image = params[:post][:image]
+    @post.image.attach(image) if image
 
     if @post.save
       render json: @post, status: :created, location: @post
@@ -23,6 +30,7 @@ class PostsController < ApplicationController
       render json: @post.errors, status: :unprocessable_entity
     end
   end
+
 
   # PATCH/PUT /posts/1
   def update
@@ -38,14 +46,6 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
-#----------added------------
-
-def latest
-  @post = Post.last
-  render json: PostSerializer.new(@post).serializable_hash[:data][:attributes]
-end
-
-#--------------------------
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -55,6 +55,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :price, :image)      #image was added
+      params.require(:post).permit(:title, :description, :category, :artist, :image)      #image was added
     end
 end
