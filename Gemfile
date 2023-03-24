@@ -52,3 +52,4 @@ gem "devise-jwt", "~> 0.10.0"
 gem "rack-cors", "~> 2.0"
 
 gem "jsonapi-serializer", "~> 2.2"
+gem 'rspec'
